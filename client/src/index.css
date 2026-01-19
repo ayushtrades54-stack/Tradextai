@@ -1,0 +1,84 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Dark modern fintech palette */
+  --background: 222 47% 4%;        /* Very dark blue/black */
+  --foreground: 210 40% 98%;
+  
+  --primary: 243 75% 59%;          /* Vibrant Indigo/Purple */
+  --primary-foreground: 210 40% 98%;
+  
+  --secondary: 217 33% 17%;        /* Dark grey-blue */
+  --secondary-foreground: 210 40% 98%;
+  
+  --muted: 217 33% 12%;
+  --muted-foreground: 215 20% 65%;
+  
+  --accent: 199 89% 48%;           /* Cyan accent for tech feel */
+  --accent-foreground: 210 40% 98%;
+  
+  --destructive: 0 84% 60%;
+  --destructive-foreground: 210 40% 98%;
+  
+  --border: 217 33% 15%;
+  --input: 217 33% 15%;
+  --ring: 243 75% 59%;
+  
+  --card: 222 47% 6%;
+  --card-foreground: 210 40% 98%;
+
+  --font-sans: 'Plus Jakarta Sans', sans-serif;
+  --font-display: 'Outfit', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  --success: 142 71% 45%;
+  --warning: 45 93% 47%;
+}
+
+@layer base {
+  body {
+    @apply bg-background text-foreground antialiased selection:bg-primary/30;
+    font-family: var(--font-sans);
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+    @apply font-bold tracking-tight text-white;
+  }
+}
+
+@layer utilities {
+  .glass-panel {
+    @apply bg-card/60 backdrop-blur-xl border border-white/10 shadow-xl;
+  }
+  
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-white via-white to-white/70;
+  }
+  
+  .text-gradient-primary {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary via-accent to-primary;
+  }
+
+  .glow-effect {
+    box-shadow: 0 0 50px -10px theme('colors.primary.DEFAULT / 0.2');
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  @apply bg-background;
+}
+::-webkit-scrollbar-thumb {
+  @apply bg-secondary rounded-full border-2 border-background;
+}
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-secondary/80;
+}
